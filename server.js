@@ -18,12 +18,14 @@ app.use(
   })
 );
 app.use(cors());
+
 app.get('/', (req, res) => res.send('Server is Running'));
+
 app.post('/jointrip', async (req, res) => {
   const { email, subject, html } = req.body;
   let info = await transporter.sendMail({
     from: 'officialozzystore@gmail.com',
-    to: 'officialremediorder@gmail.com',
+    to: email,
     subject,
     html,
   });
